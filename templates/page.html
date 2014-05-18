@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title data-template="config:app-title">App Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta data-template="config:app-meta"/>
+        <link rel="shortcut icon" href="resources/images/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+        <script type="text/javascript" src="resources/scripts/bootstrap.min.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
+    </head>
+    <body id="body">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"/>
+                        <span class="icon-bar"/>
+                        <span class="icon-bar"/>
+                    </button>
+                    <a class="navbar-brand" data-template="config:app-title" href="index.html">App Title</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"/>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="index.html">
+                                        <span class="glyphicon glyphicon-home"/> Home page : application list</a>
+                                </li>
+                                <li>
+                                    <a href="embed.html">
+                                        <span class="glyphicon glyphicon-list"/> Embed list on a web page</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <b class="caret"/>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="feedback.html">
+                                        <i class="glyphicon glyphicon-question-sign"/> Feedback</a>
+                                </li>
+                                <li class="divider"/>
+                                <li>
+                                    <a href="about.html">
+                                        <i class="glyphicon glyphicon-info-sign"/> About</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form action="index.html" class="navbar-form navbar-left" role="search" method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="q"/>
+                            <span class="input-group-addon glyphicon glyphicon-search form-control-feedback"/>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">
+                                <span class="text-warning">
+                                    <span class="glyphicon glyphicon-warning-sign"/> Prototype under development, do not use in production.</span>
+                            </a>
+                        </li>
+                        <div data-template="templates:if-attribute-set" data-template-attribute="user">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in. <b class="caret"/>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="index.html?logout=true">
+                                            <i class="glyphicon glyphicon-log-out"/> Sign out</a>
+                                    </li>
+                                    <li class="divider"/>
+                                    <li>
+                                        <a href="https://apps.jmmc.fr/account">
+                                            <i class="glyphicon glyphicon-edit"/> Manage account</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="content" class="container-fluid"/>
+        <script src="$shared/resources/scripts/ace/ace.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/ace/mode-html.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/ace/mode-javascript.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/ace/mode-text.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/ace/mode-xquery.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/ace/mode-java.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/ace/mode-css.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/ace/mode-xml.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/ace/theme-tomorrow_night.js" type="text/javascript"/>
+        <script src="$shared/resources/scripts/highlight.js" type="text/javascript"/>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".code").highlight();
+            });            
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("[rel='tooltip']").tooltip();
+            });
+        </script>
+    </body>
+</html>

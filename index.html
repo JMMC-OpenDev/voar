@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" class="templates:surround?with=templates/page.html&amp;at=content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>VO application registry <a href="http://www.jmmc.fr/applauncher">
+                        <img style="float:right;" src="http://www.jmmc.fr/images/applauncher-6464.png" alt="icon"/>
+                    </a>
+                </h1>
+                <p>
+        
+    This web portal shows the <a href="http://www.jmmc.fr/applauncher">AppLauncher</a> registry and aims to:
+        <ul>
+                        <li>list the VO applications supporting SAMP interoperability</li>
+                        <li>
+                            <a href="embed.html">embed</a> the whole VO application list or a sublist into your web page</li>
+                        <li>advertise the <a href="http://www.jmmc.fr/applauncher">AppLauncher</a> and SAMP applications</li>
+                    </ul>
+        
+        Please <a href="http://www.jmmc.fr/support">send your feedback</a>.
+    </p>
+            </div>
+            <div class="col-md-6">
+                <h1>Registered application list</h1>
+                <form id="fun-query-form" name="f-query" action="" method="POST">
+                    <table>
+                        <tr>
+                            <td class="f-btn"> Search </td>
+                            <td colspan="3">
+                                <input id="query-field" name="q" type="text" class="templates:form-control"/>
+                in
+                    
+                        <select name="qtype" class="templates:form-control">
+                                    <option value="desc">Description</option>
+                                    <option value="samp">Samp capability</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f-btn">
+                Filter by category                
+                </td>
+                            <td colspan="3">
+                                <div data-template="app:categories">
+                                    <div>
+                                        <input data-template="templates:each" data-template-from="categories" data-template-to="category">
+                                            <span data-template="app:category-checkbox"/>
+                                        </input>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f-btn">
+                Output format 
+                </td>
+                            <td colspan="3">
+                                <select name="format" class="templates:form-control">
+                                    <option>html</option>
+                                    <option>json</option>
+                                    <option>xml</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f-btn">
+                                <button id="f-btn-search" type="submit" name="action" value="search" class="btn btn-primary btn-xs">Search</button>
+                            </td>
+                            <td colspan="3"/>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="app:search">
+        <div class="app:display"/>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>VO Application Registry</description>
+    <author/>
+    <website/>
+    <status>alpha</status>
+    <license/>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>voar</target>
+    <prepare>pre-install.xql</prepare>
+    <finish/>
+    <note/>
+    <changelog>
+        <change xmlns="" version="0.2">
+            <h3>First release to be presented at Madrid for Interop - may 2014 </h3>
+            <ul>
+                <li>TODO:
+                    <ul>
+                        <li>Provide a javascript with it dedicated API to embed instead of the ?long - non-dummy? code (see AladinLite Approach) WITH the API mod ( startAppLauncher(), htmlList())
+                        </li>
+                        <li>Provide filters
+                            <ul>
+                                <li>limit to some capabilities (mtype)</li>
+                                <li>limit to some categories</li>
+                                <li>add beta declinations</li>
+                            </ul>
+                        </li>
+                        <li>Fix bug with non jnlp application</li>
+                        <li>Use icon_url hosted by JMMC for applications without web reference</li>
+                        <li>Document JSONP</li>
+                    </ul>
+                </li>
+            </ul>
+        </change>
+        <change xmlns="" version="0.1">
+            <h3>First basic and light prototype - jan 2014 </h3>
+        </change>
+    </changelog>
+</meta>

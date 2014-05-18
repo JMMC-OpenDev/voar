@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <h2>Credits</h2>
+    <p>
+        Many thanks to :
+        <ul>
+            <li>J.M. Glorian OVGSO for his contribution.</li>
+            <li>T. Boch CDS for integration samples provided on <a href="http://aladin.u-strasbg.fr/AladinLite/#embedding">AladinLite</a>.
+            </li>
+            <li>exist-db, gnu/linux, apache and many other wonderfull tools.</li>
+        </ul>
+    </p>
+    <h2>ChangeLog</h2>
+    <div data-template="jmmc-about:changelog">
+        Current version: <span data-template="jmmc-about:version"/>
+        <div data-template="templates:each" data-template-from="changes" data-template-to="change">
+            <div>
+                <hr/>
+                <div>
+                    <b>Version <span data-template="jmmc-about:change-version"/>
+                    </b>
+                </div>
+                <div data-template="jmmc-about:change"/>
+            </div>
+        </div>
+    </div>
+</div>
