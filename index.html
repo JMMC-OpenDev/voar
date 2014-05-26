@@ -3,22 +3,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                <h1>VO application registry <a href="http://www.jmmc.fr/applauncher">
-                        <img style="float:right;" src="http://www.jmmc.fr/images/applauncher-6464.png" alt="icon"/>
+                <h1>
+                    <img src="resources/images/voar49x64.png" alt="vo ar icon"/> application registry<a href="http://www.jmmc.fr/applauncher">
+                        <img src="http://www.jmmc.fr/images/applauncher-6464.png" alt="icon"/>
                     </a>
                 </h1>
                 <p>
         
     This web portal shows the <a href="http://www.jmmc.fr/applauncher">AppLauncher</a> registry and aims to:
         <ul>
-                        <li>list the VO applications supporting SAMP interoperability</li>
+                        <li>list the <a href="http://ivoa.net/astronomers/applications.html">VO applications</a> supporting <a href="http://www.ivoa.net/astronomers/vo_glossary.html">SAMP</a> interoperability</li>
                         <li>
                             <a href="embed.html">embed</a> the whole VO application list or a sublist into your web page</li>
                         <li>advertise the <a href="http://www.jmmc.fr/applauncher">AppLauncher</a> and SAMP applications</li>
                     </ul>
-        
-        Please <a href="http://www.jmmc.fr/support">send your feedback</a>.
-    </p>
+                </p>
             </div>
             <div class="col-md-6">
                 <h1>Registered application list</h1>
@@ -31,8 +30,10 @@
                 in
                     
                         <select name="qtype" class="templates:form-control">
+                                    <option value="">Every fields</option>
                                     <option value="desc">Description</option>
-                                    <option value="samp">Samp capability</option>
+                                    <option value="mtype">SAMP MTypes</option>
+                                    <option value="name">Name</option>
                                 </select>
                             </td>
                         </tr>
@@ -76,4 +77,9 @@
     <div class="app:search">
         <div class="app:display"/>
     </div>
+    <p class="pager">Please <a href="http://www.jmmc.fr/support">send your feedback</a>.<br/>
+        <a href="http://www.jmmc.fr">
+            <img src="http://www.jmmc.fr/images/jmmc_large.jpg"/>
+        </a>
+    </p>
 </div>

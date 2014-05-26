@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" class="templates:surround?with=templates/page.html&amp;at=content">
     <h1>Embed samp applications in your web page</h1>
+    <p>As first service we provide JavaScript API (V0.0.1) to display on your webpage a list of applications for a given list of SAMP MTypes. This API consists in a very basic jquery plugin. Please look at the sample snippet code provided just below to build list through following steps:
+        <ul>
+            <li>include JavaScript</li>
+            <li>declare your html list markup (<code>&lt;ul id="yourid"/&gt;</code> or <code>&lt;ol id="yourid"/&gt;</code>) </li>
+            <li>request filling</li>
+        </ul>
+        You can also look at our <a href="api/test-0.1.html">simple demo web page</a>
+    </p>
+    <h2>Sample script</h2>
     <div class="app:getEmbedderSnippet"/>
-    <h1>Sample</h1>
+    <h2>Sample result</h2>
     <ul id="sampApplications"><!-- Populated by script --></ul>
     <div class="app:getEmbedderCode"/>
-    <h1>
-        <a href="json.xql">View JSON</a>
-    </h1>
+    <h1>JSON</h1>
+    <p>If the proposed code does not satisty your needs, you may also try your own stuff from the <a href="json.xql">json</a>. API will be delivered versionned and is not subjected to changes, but json may changes.
+        <br/>Add a <code>jsonp</code> parameter with your desired callback name to get a JSONP output.
+    </p>
 </div>

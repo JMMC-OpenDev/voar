@@ -31,32 +31,45 @@ declare function app:category-checkbox($node as node(), $model as map(*), $categ
     return ( if($cat=$category) then attribute {"checked"} {"on"} else (), attribute {"value"} {$cat} ,  attribute {"type"} {"checkbox"}, attribute {"name"} {"category"}, $cat)
 };
 
+(: produce initial SampStub list with some filtering :)
 declare function app:get-stubs() as node()* {    
-    let $stubs := collection($config:app-root||"/registry")//SampStub    
+    let $stubs := collection($config:app-root||"/registry")//SampStub
     let $families := doc($config:app-root||"/registry/__index__.xml")//SampStubList/family
     
-    (: append to the stub list a category node :)
-    for $s in $stubs order by $s/@uid return
+    (: append to the stub list a category node and filter out appLauncherTester :)
+    for $s in $stubs[@uid != "AppLauncherTester"]    
+    order by $s/@uid  return
         element {name($s)} { $s/@*, element {"category"} {data($families[application=$s/@uid]/@category)}, $s/*}     
 };
 
-declare function app:search($node as node(), $model as map(*), $category as xs:string*, $capability as xs:string*,$q as xs:string*, $qtype as xs:string?) {    
-    let $stub-list := app:get-stubs()
-    (: TODO :)
+declare function app:search-stubs($category as xs:string*, $mtype as xs:string*, $description as xs:string*, $q as xs:string*, $qtype as xs:string?) {    
+
+    let $stub-list := app:get-stubs()        
+    let $stub-list := if(exists($mtype)) then for $s in $stub-list where some $m in $mtype satisfies matches(string-join($s/subscription,","),$m,"i") return $s else $stub-list
+    let $stub-list := if(exists($description)) then for $s in $stub-list where some $d in $description satisfies matches($s/metadata[key="samp.description.text"]/value,$d,"i") return $s else $stub-list
+    
     let $stub-list := if($q) then 
                         switch( $qtype )
-                            case "samp" return
-                                (: collection($config:data-root)//model[.//tag=$q] :)
+                            case "name" return
+                                $stub-list[metadata[key="samp.name"]/value[matches(.,$q,"i")]]                             
+                            case "mtype" return                                
                                 $stub-list[subscription[matches(.,$q,"i")]]
                             case "desc" return
                                 $stub-list[metadata[key="samp.description.text"]/value[matches(.,$q,"i")]]                             
                             default return
-                                $stub-list[subscription[matches(.,$q,"i")] or metadata[key="samp.description.text"]/value[matches(.,$q,"i")]]
+                                (: $stub-list[subscription[matches(.,$q,"i")] or metadata[key="samp.description.text"]/value[matches(.,$q,"i")]]
+                                :)
+                                $stub-list[matches(.,$q,"i")]
                     else
                         $stub-list                 
         
     let $stub-list :=   if(exists($category)) then $stub-list[$category = category] else $stub-list    
     
+    return $stub-list
+};
+
+declare function app:search($node as node(), $model as map(*), $category as xs:string*, $mtype as xs:string*, $description as xs:string*, $q as xs:string*, $qtype as xs:string?) {        
+    let $stub-list := app:search-stubs( $category, $mtype, $description, $q, $qtype)        
     return
         map:new(($model,map { "stubs" := $stub-list , "info" := count($stub-list)||" stubs "||count($category)||" cats ("||string-join($category,",")}))
 };
@@ -76,7 +89,7 @@ declare function app:display($node as node(), $model as map(*), $format as xs:st
         return
         <div>
             <h2>{data($family)}</h2>
-            {$model("info")}
+            <!-- {$model("info")} -->
             <table>
                 <tr>
                     <td>
@@ -139,6 +152,41 @@ let $json := util:serialize($list, "method=json")
 return if($jsonpCallback) then $jsonpCallback||"("||$json||")" else $json
 };
 
+declare function app:getJson() as xs:string {
+    
+let $category := request:get-parameter("category", ())
+let $mtype := request:get-parameter("mtype", ())    
+let $description := request:get-parameter("description", ())    
+let $q := request:get-parameter("q", ())    
+let $qtype := request:get-parameter("qtype", ())    
+let $stubs := app:search-stubs( $category, $mtype,$description, $q, $qtype)
+
+let $jsonpCallback := request:get-parameter("jsonp", ())
+
+(:
+ : We can't extract directly samp stub elements because we need to 
+ : <list>{collection($config:app-root)//SampStubList}{collection($config:app-root)//SampStub}</list>
+ :)
+let $list := <list>
+    {
+        for $app in $stubs
+        order by $app/metadata[key="samp.name"]/value
+        return <SampApplication>
+            {
+                for $meta in $app//metadata                    
+                    let $name := translate(tokenize($meta/key/text(), "samp.")[last()],".","_")
+                    order by $name
+                    return element {$name} {$meta/value/text()}
+            }
+        </SampApplication>    
+    }
+</list>
+let $json := util:serialize($list, "method=json")
+
+return if($jsonpCallback) then $jsonpCallback||"("||$json||")" else $json
+};
+
+
 declare function app:displayXml($node as node(), $model as map(*)) as xs:string { 
     let $stubs := $model("stubs")
     let $list := <list>    { $stubs } </list>
@@ -190,29 +238,23 @@ declare function app:getApplicationDetail($node as node(), $model as map(*)) {
         </div>
 };
 
-declare variable $app:code :=<script>
-    <![CDATA[
-    $(document).ready( function() {
-        $.getJSON('http://apps.jmmc.fr/exist/apps/voar/json.xql?jsonp=?'
-        ).done(
-            function(data) {
-                $.each(data.SampApplication, function(i, f) {
-                    var li = "<li><a href='"+  f.jnlp_url 
-                    + "'><img src='"+f.icon_url
-                    +"' width='30' style='vertical-align:middle;'/>&#160;"
-                    + f.name + "</a></li>";
-                    $("#sampApplications").append(li);
-                });
-            } 
-      ).fail(
-            function(jqxhr, textStatus, error) {
-                console.error("Can't retrieve samp application list in json : " + textStatus+ ', ' + error); 
-            }            
-      ).always(function() { console.log( "complete" ); });
-      }
-    );
-]]>
-</script>;
+declare variable $app:code :=<div>
+    
+    <!-- skip the following line if your page already integrates the jQuery library -->
+    <script type="text/javascript" src="http://voar.jmmc.fr/api/jquery-1.11.1.min.js"/>
+    
+    <!-- define an ul element with uniq id -->
+    <ul id="sampListByMtype"></ul>            
+            
+    <!-- load the main javascript and call functions over the previously defined ul -->
+    <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.0.1.js"/>
+    <script type="text/javascript">
+    
+        <![CDATA[    $("#sampListByMtype").getSampAppList({'mtype':'table.load.votable'}) ]]>
+        
+    </script>
+        
+</div>;
 
 
 
@@ -222,15 +264,11 @@ declare function app:getEmbedderCode($node as node(), $model as map(*)) {
 
 declare function app:getEmbedderSnippet($node as node(), $model as map(*)) {
         <figure>
-            <div style="background: #555555" class="code" data-language="html">            
+            <div class="code" data-language="html" style="background: #555555">
             {
-                let $ul:=<ul id="sampApplications"><!-- Populated by script --></ul>
-                return util:serialize($ul, "method=xml")
-            }            
-&lt;script type="text=javascript"&gt;{
-                data($app:code)
-            }
-&lt;/script&gt;</div>
+                serialize($app:code)
+            }                
+            </div>
             <figcaption>Javascript to include onto your web page</figcaption>        
         </figure>
 };

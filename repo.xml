@@ -12,29 +12,21 @@
     <finish/>
     <note/>
     <changelog>
-        <change xmlns="" version="0.2">
-            <h3>First release to be presented at Madrid for Interop - may 2014 </h3>
+        <change xmlns="" version="0.1">
+            <h3>First release presented at Interop - Madrid May 2014 </h3>
             <ul>
+                <li>Provides a basic API mode as a jQuery plugin</li>
+                <li>Fix API bug when json returns only one application</li>
                 <li>TODO:
                     <ul>
-                        <li>Provide a javascript with it dedicated API to embed instead of the ?long - non-dummy? code (see AladinLite Approach) WITH the API mod ( startAppLauncher(), htmlList())
-                        </li>
-                        <li>Provide filters
-                            <ul>
-                                <li>limit to some capabilities (mtype)</li>
-                                <li>limit to some categories</li>
-                                <li>add beta declinations</li>
-                            </ul>
-                        </li>
-                        <li>Fix bug with non jnlp application</li>
-                        <li>Use icon_url hosted by JMMC for applications without web reference</li>
-                        <li>Document JSONP</li>
+                        <li>Provide a flag to use beta jnlps ? ... or leave this fonction to AppLauncher?</li>
+                        <li>Improve handling of non jnlp application</li>
+                        <li>Use icon_url hosted by JMMC for applications without web url</li>
+                        <li>Provide a more sophisticated code hidden behind a simple button that lists compatible applications, send a samp message if user clicked after starting the samp machinery if not yet ready.</li>
                     </ul>
                 </li>
+                <li>Display interactively (mouse over) the application details on the application list of the home page.</li>
             </ul>
-        </change>
-        <change xmlns="" version="0.1">
-            <h3>First basic and light prototype - jan 2014 </h3>
         </change>
     </changelog>
 </meta>

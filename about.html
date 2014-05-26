@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
-    <h2>Credits</h2>
+    <ul>
+        <li>
+            <a href="#credits">Credits</a>
+        </li>
+        <li>
+            <a href="#changelog">Change Log</a>
+        </li>
+    </ul>
+    <hr/>
+    <h2>
+        <a name="credits"/>Credits</h2>
     <p>
         Many thanks to :
         <ul>
-            <li>J.M. Glorian OVGSO for his contribution.</li>
-            <li>T. Boch CDS for integration samples provided on <a href="http://aladin.u-strasbg.fr/AladinLite/#embedding">AladinLite</a>.
+            <li>
+                <a href="http://www.ivoa.net">IVOA</a> community and products
             </li>
-            <li>exist-db, gnu/linux, apache and many other wonderfull tools.</li>
+            <li>Colleagues from <a href="http://www.france-vo.org">
+                    <img alt="france-ov logo" src="resources/images/france-vo.jpg" width="106" heigth="59"/>
+                </a>
+                <ul>
+                    <li>J.M. Glorian OV-GSO and Renaud Savalle for their feedback and contribution.</li>
+                    <li>T. Boch CDS for integration samples provided on <a href="http://aladin.u-strasbg.fr/AladinLite/#embedding">AladinLite</a>.</li>
+                    <li>L. Michel with <a href="http://saada.unistra.fr/taphandle/">TapHandle</a> samples</li>
+                </ul>
+            </li>
+            <li>exist-db, gnu/linux, apache and many other wonderful tools.</li>
         </ul>
     </p>
-    <h2>ChangeLog</h2>
     <div data-template="jmmc-about:changelog">
-        Current version: <span data-template="jmmc-about:version"/>
+        <h2>
+            <a name="changelog"/>Change Log (current version: <span data-template="jmmc-about:version"/>)</h2>
         <div data-template="templates:each" data-template-from="changes" data-template-to="change">
             <div>
                 <hr/>
