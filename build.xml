@@ -5,6 +5,9 @@
     <property name="build.dir" value="build"/>
     <target name="xar">
         <mkdir dir="${build.dir}"/>
-        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar" excludes="${build.dir}/*"/>
+        <delete dir="${build.dir}" includes="*.xar"/>
+
+        <zip basedir="." destfile="${build.dir}/${project.app}-${project.version}.xar"
+             excludes="${build.dir}/**,.exist/**,target/**,build.xml,pom.xml"/>
     </target>
 </project>
