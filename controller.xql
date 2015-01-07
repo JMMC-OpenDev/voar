@@ -33,4 +33,5 @@ else
     (: everything else is passed through :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <cache-control cache="yes"/>
+        <set-header name="Access-Control-Allow-Origin" value="*"/>
     </dispatch>

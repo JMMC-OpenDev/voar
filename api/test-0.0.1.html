@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>VOAR simple test</title>
+    </head>
+    <body>
+        <h3>List all applications supporting "table.load.votable" SAMP MType</h3>
+        
+        <!-- skip next line if jQuery library is already present -->
+        <script type="text/javascript" src="http://voar.jmmc.fr/api/jquery-1.11.1.min.js" charset="utf-8"/>
+        
+        <!-- define an ul element with uniq id -->
+        <ul id="sampListByMtype"/>            
+                
+        <!-- load the main javascript and call functions over the previously defined ul elements -->
+        <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.0.1.js" charset="utf-8"/>
+        <script type="text/javascript">
+            $("#sampListByMtype").getSampAppList({'mtype':'table.load.votable'})            
+        </script>
+            
+        <!-- For more sofisticated list -->
+        <!-- define some ul elements with uniq ids -->
+        <ol>
+            <li>
+                List all applications
+                <ul id="sampList"/>
+            </li>
+            <li>
+                List all applications of "Essentials" Category
+                <ul id="sampListByCategory"/>
+            </li>
+            <li>
+                List all applications without bullets where SAMP MType contains "sky"
+                <ul id="sampListByMtype2"/>
+            </li>
+        </ol>
+        
+        <!-- and call again functions over the previously defined ul elements -->
+        <script type="text/javascript">
+            $("#sampList").getSampAppList()
+            $("#sampListByCategory").getSampAppList({'category':'Essentials'})  
+            $("#sampListByMtype2").css({'list-style-type':'none'}).getSampAppList({'mtype':'sky'})
+
+        </script>
+    </body>
+</html>

@@ -12,6 +12,12 @@
     <finish/>
     <note/>
     <changelog>
+         <change xmlns="" version="0.2">
+             <h3>Improvment for HTTPS support </h3>
+             <ul>
+                <li>Modify some url schemes and hosts and provide voar-0.2.js : still under test</li>
+             </ul>
+         </change>
         <change xmlns="" version="0.1">
             <h3>First release presented at Interop - Madrid May 2014 </h3>
             <ul>
