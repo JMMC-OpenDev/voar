@@ -15,7 +15,8 @@
          <change xmlns="" version="0.2">
              <h3>Improvment for HTTPS support </h3>
              <ul>
-                <li>Modify some url schemes and hosts and provide voar-0.2.js : still under test</li>
+                <li>Modify some url schemes and hosts and provide voar-0.2.js</li>
+                <li>Accept multiple parameters to get all matched elements</li>
              </ul>
          </change>
         <change xmlns="" version="0.1">

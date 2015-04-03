@@ -1,6 +1,13 @@
 /* 
   API v-0.2 of voar
   - provide a multischeme support for urls
+  - provide support for multiple parameters given as an array eg: 
+     $("#sampListByMtypeOr").appendAppList({'mtype':['spectrum.load.ssa-generic', 'fr.jmmc.litpro.start.setting']})
+  
+    todo: 
+      - replace home variable with '//voar.jmmc.fr/' as soon as this server get a valid certificates.
+      - fix each data.SampApplication for single application return that fails
+
 */
 
 (function($){
@@ -9,11 +16,12 @@
     // home='//voar.jmmc.fr/' not yet compatible in https with our https certificates
     
     $.fn.appendAppList = function(params){
-        return this.each(function(){                        
+        return this.each(function(){
             var items = [];
             var ulEl = $(this);
             $.getJSON(
-                home+'json.xql?jsonp=?',params
+                home+'json.xql?jsonp=?',
+                params
                 ).done(
                     function(data) {
                         $.each(data.SampApplication, function(i, f) {

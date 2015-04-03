@@ -154,12 +154,12 @@ return if($jsonpCallback) then $jsonpCallback||"("||$json||")" else $json
 
 declare function app:getJson() as xs:string {
     
-let $category := request:get-parameter("category", ())
-let $mtype := request:get-parameter("mtype", ())    
+let $categories      := (request:get-parameter("category", ()), request:get-parameter("category[]", ()))
+let $mtypes         := (request:get-parameter("mtype", ()), request:get-parameter("mtype[]", ()))
 let $description := request:get-parameter("description", ())    
 let $q := request:get-parameter("q", ())    
 let $qtype := request:get-parameter("qtype", ())    
-let $stubs := app:search-stubs( $category, $mtype,$description, $q, $qtype)
+let $stubs         := app:search-stubs( $categories, $mtypes,$description, $q, $qtype)
 
 let $jsonpCallback := request:get-parameter("jsonp", ())
 
@@ -247,7 +247,7 @@ declare variable $app:code :=<div>
     <ul id="sampListByMtype"></ul>            
             
     <!-- load the main javascript and call functions over the previously defined ul -->
-    <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.0.1.js"/>
+    <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.2.js"/>
     <script type="text/javascript">
     
         <![CDATA[    $("#sampListByMtype").getSampAppList({'mtype':'table.load.votable'}) ]]>
