@@ -12,6 +12,13 @@
     <finish/>
     <note/>
     <changelog>
+         <change xmlns="" version="0.3">
+             <h3>Registry update </h3>
+             <ul>
+                <li>Add mode applications</li>
+                <li>Fix javascript on embed.html page</li>
+             </ul>
+         </change>
          <change xmlns="" version="0.2">
              <h3>Improvment for HTTPS support </h3>
              <ul>
