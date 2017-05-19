@@ -250,7 +250,7 @@ declare variable $app:code :=<div>
     <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.2.js"/>
     <script type="text/javascript">
     
-        <![CDATA[    $("#sampListByMtype").getSampAppList({'mtype':'table.load.votable'}) ]]>
+        <![CDATA[    $("#sampListByMtype").appendAppList({'mtype':'table.load.votable'}) ]]>
         
     </script>
         
