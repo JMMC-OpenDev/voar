@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SampStub uid="Aladin" lag="5000">
     <metadata>
         <key>samp.name</key>
@@ -26,7 +26,7 @@
     </metadata>
     <metadata>
         <key>aladin.version</key>
-        <value>v8.040</value>
+        <value>v9.033a</value>
     </metadata>
     <metadata>
         <key>author.affiliation</key>

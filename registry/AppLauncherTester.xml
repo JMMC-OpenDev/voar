@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SampStub uid="AppLauncherTester">
     <metadata>
         <key>samp.name</key>
@@ -15,6 +15,10 @@
     <metadata>
         <key>x-samp.homepage.url</key>
         <value>http://www.jmmc.fr/AppLauncher/</value>
+    </metadata>
+    <metadata>
+        <key>x-samp.jnlp.url</key>
+        <value>http://www.jmmc.fr/apps/public/AppLauncherTester/AppLauncherTester.jnlp</value>
     </metadata>
     <metadata>
         <key>x-samp.release.date</key>

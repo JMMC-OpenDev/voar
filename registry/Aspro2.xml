@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SampStub uid="Aspro2">
     <metadata>
         <key>samp.name</key>
@@ -7,6 +7,10 @@
     <metadata>
         <key>samp.description.text</key>
         <value>Prepare your interferometric observations with the VLTI or other interferometers</value>
+    </metadata>
+    <metadata>
+        <key>samp.documentation.url</key>
+        <value>http://www.jmmc.fr/twiki/bin/view/Jmmc/Software/JmmcAspro2</value>
     </metadata>
     <metadata>
         <key>x-samp.affiliation.name</key>
@@ -30,19 +34,19 @@
     </metadata>
     <metadata>
         <key>x-samp.jnlp.url</key>
-        <value>http://apps.jmmc.fr/~swmgr/Aspro2/Aspro2.jnlp</value>
+        <value>http://www.jmmc.fr/apps/public/Aspro2/Aspro2.jnlp</value>
     </metadata>
     <metadata>
         <key>x-samp.jnlp.beta.url</key>
-        <value>http://apps.jmmc.fr/~betaswmgr/Aspro2/Aspro2.jnlp</value>
+        <value>http://www.jmmc.fr/apps/beta/Aspro2/Aspro2.jnlp</value>
     </metadata>
     <metadata>
         <key>x-samp.release.date</key>
-        <value>12/09/2013</value>
+        <value>10/03/2017</value>
     </metadata>
     <metadata>
         <key>x-samp.release.version</key>
-        <value>0.9.5.1</value>
+        <value>0.9.9.2</value>
     </metadata>
     <metadata>
         <key>x-samp.releasenotes.url</key>
