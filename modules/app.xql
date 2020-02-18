@@ -247,7 +247,7 @@ declare variable $app:code :=<div>
     <ul id="sampListByMtype"></ul>            
             
     <!-- load the main javascript and call functions over the previously defined ul -->
-    <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.2.js"/>
+    <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.3.js"/>
     <script type="text/javascript">
     
         <![CDATA[    $("#sampListByMtype").appendAppList({'mtype':'table.load.votable'}) ]]>

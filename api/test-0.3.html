@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>VOAR simple test</title>
+    </head>
+    <body>
+        <h3>List all applications supporting "table.load.votable" SAMP MType</h3>
+        
+        <!-- skip next line if jQuery library is already present -->
+        <script type="text/javascript" src="http://voar.jmmc.fr/api/jquery-1.11.1.min.js" charset="utf-8"/>
+        
+        <!-- define an ul element with uniq id -->
+        <ul id="sampListByMtype"/>            
+                
+        <!-- load the main javascript and call functions over the previously defined ul elements -->
+        <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.3.js" charset="utf-8"/>
+        <script type="text/javascript">
+            $("#sampListByMtype").appendAppList({'mtype':'table.load.votable'})            
+        </script>
+            
+        <!-- For more sofisticated list -->
+        <!-- define some ul elements with uniq ids -->
+        <ol>
+            <li>
+                List all applications <code>.appendAppList() </code>
+                <ul id="sampList"/>
+            </li>
+            <li>
+                List all applications of "Essentials" or "WebApps" Category<br/>
+                <code>.appendAppList({'category':['Essentials', 'WebApps']})</code>
+                <ul id="sampListByCategory"/>
+            </li>
+            <li>
+                List all applications ( without bullets, see the source of this page ) where SAMP MType contains "sky"
+                <br/>
+                <code>.css({'list-style-type':'none'}).appendAppList({'mtype':'sky'})</code>
+                <ul id="sampListByMtype2"/>
+            </li>
+            <li>
+                List all applications that match one of the given MType : <b>spectrum.load.ssa-generic</b> or <b>fr.jmmc.litpro.start.setting</b>
+                <br/>
+                <code>.appendAppList({'mtype':['spectrum.load.ssa-generic', 'fr.jmmc.litpro.start.setting']})</code>
+                <ul id="sampListByMtypeOr"/>
+            </li>
+        </ol>
+        <h2>
+            <a href="../embed.html">Back to the documentation</a>
+        </h2>
+        
+        <!-- and call again functions over the previously defined ul elements -->
+        <script type="text/javascript">
+            $("#sampList").appendAppList()
+            $("#sampListByCategory").appendAppList({'category':['Essentials', 'WebApps']})  
+            $("#sampListByMtype2").css({'list-style-type':'none'}).appendAppList({'mtype':'sky'})
+            $("#sampListByMtypeOr").appendAppList({'mtype':['spectrum.load.ssa-generic', 'fr.jmmc.litpro.start.setting']})
+        </script>
+    </body>
+</html>
