@@ -14,6 +14,7 @@
     <changelog>
          <change xmlns="" version="0.4">
            <h3>Url update with https://voar.jmmc.fr</h3>
+           <h3>Remove VOplot from the registry </h3>
          </change>
          <change xmlns="" version="0.3">
              <h3>Registry update </h3>
