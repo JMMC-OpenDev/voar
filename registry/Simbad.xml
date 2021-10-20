@@ -10,11 +10,11 @@
     </metadata>
     <metadata>
         <key>x-samp.webapp.url</key>
-        <value>http://simbad.u-strasbg.fr/simbad/</value>
+        <value>https://simbad.u-strasbg.fr/simbad/</value>
     </metadata>
     <metadata>
         <key>samp.documentation.url</key>
-        <value>http://simbad.u-strasbg.fr/guide/index.htx</value>
+        <value>https://simbad.u-strasbg.fr/guide/index.htx</value>
     </metadata>
     <metadata>
         <key>author.affiliation</key>
@@ -26,6 +26,6 @@
     </metadata>
     <metadata>
         <key>home.page</key>
-        <value>http://simbad.u-strasbg.fr/</value>
+        <value>https://simbad.u-strasbg.fr/</value>
     </metadata>
 </SampStub>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SampStub uid="AMDA" type="WEB">
+    <metadata>
+        <key>samp.name</key>
+        <value>AMHRA</value>
+    </metadata>
+    <metadata>
+        <key>samp.description.text</key>
+        <value>Analysis and Modeling at High Angular Resolution</value>
+    </metadata>
+    <metadata>
+        <key>x-samp.webapp.url</key>
+        <value>https://amhra.oca.eu/</value>
+    </metadata>
+    <metadata>
+        <key>x-samp.affiliation.name</key>
+        <value>JMMC (Jean-Marie Mariotti Center)</value>
+    </metadata>    
+    <metadata>
+        <key>home.page</key>
+        <value>https://amhra.oca.eu/</value>
+    </metadata>
+    <!-- TODO add list of capabilities -->
+</SampStub>

@@ -14,23 +14,23 @@
     </metadata>
     <metadata>
         <key>x-samp.affiliation.url</key>
-        <value>http://www.jmmc.fr/</value>
+        <value>https://www.jmmc.fr/</value>
     </metadata>
     <metadata>
         <key>x-samp.authors</key>
-        <value>Brought to you by FIZEAU and IPAG laboratories, and the JMMC Technical Group</value>
+        <value>Brought to you by LAGRANGE and IPAG laboratories, and the JMMC Technical Group</value>
     </metadata>
     <metadata>
         <key>x-samp.faq.url</key>
-        <value>http://www.jmmc.fr/SearchCal/faq</value>
+        <value>https://www.jmmc.fr/SearchCal/faq</value>
     </metadata>
     <metadata>
         <key>x-samp.homepage.url</key>
-        <value>http://www.jmmc.fr/SearchCal</value>
+        <value>https://www.jmmc.fr/SearchCal</value>
     </metadata>
     <metadata>
         <key>x-samp.jnlp.url</key>
-        <value>http://apps.jmmc.fr/~sclws/SearchCal/SearchCal.jnlp</value>
+        <value>http://www.jmmc.fr/apps/public/SearchCal/SearchCal.jnlp</value>
     </metadata>
     <metadata>
         <key>x-samp.jnlp.beta.url</key>
@@ -38,19 +38,15 @@
     </metadata>
     <metadata>
         <key>x-samp.release.date</key>
-        <value>28/02/2014</value>
+        <value>08/09/2020</value>
     </metadata>
     <metadata>
         <key>x-samp.release.version</key>
-        <value>4.4.3</value>
-    </metadata>
-    <metadata>
-        <key>x-samp.releasenotes.url</key>
-        <value>http://www.jmmc.fr/searchcal/releasenotes.htm</value>
+        <value>5.1.4</value>
     </metadata>
     <metadata>
         <key>x-samp.rss.url</key>
-        <value>http://www.jmmc.fr/searchcal/searchcal.rss</value>
+        <value>https://www.jmmc.fr/searchcal/searchcal.rss</value>
     </metadata>
     <subscription>samp.app.ping</subscription>
     <subscription>samp.hub.disconnect</subscription>

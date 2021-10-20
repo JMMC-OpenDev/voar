@@ -6,7 +6,7 @@
     </metadata>
     <metadata>
         <key>x-samp.homepage.url</key>
-        <value>http://cda.cfa.harvard.edu/seleste/</value>
+        <value>https://cda.cfa.harvard.edu/seleste/</value>
     </metadata>
     <metadata>
         <key>x-samp.jnlp.url</key>
@@ -18,7 +18,7 @@
     </metadata>
     <metadata>
         <key>samp.icon.url</key>
-        <value>http://cda.cfa.harvard.edu/seleste/seleste/images/logo48.png</value>
+        <value>https://cda.cfa.harvard.edu/seleste/seleste/images/logo48.png</value>
     </metadata>
     <metadata>
         <key>x-samp.authors</key>

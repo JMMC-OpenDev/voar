@@ -14,7 +14,8 @@
     </metadata>
     <metadata>
         <key>samp.documentation.url</key>
-        <value>http://127.0.0.1:2525/doc/sun253/index.html</value>
+        <value>http://www.star.bris.ac.uk/~mbt/topcat/sun253/index.html</value>
+	<!-- <value>http://127.0.0.1:2525/doc/sun253/index.html</value> -->
     </metadata>
     <metadata>
         <key>x-samp.jnlp.url</key>

@@ -6,11 +6,11 @@
     </metadata>
     <metadata>
         <key>samp.description.text</key>
-        <value>The Aladin sky atlas and VO Portal</value>
+        <value>The Aladin sky atlas</value>
     </metadata>
     <metadata>
         <key>samp.icon.url</key>
-        <value>http://aladin.u-strasbg.fr/aladin_large.gif</value>
+        <value>https://aladin.u-strasbg.fr/aladin_large.gif</value>
     </metadata>
     <metadata>
         <key>x-samp.jnlp.url</key>
@@ -22,11 +22,11 @@
     </metadata>
     <metadata>
         <key>samp.documentation.url</key>
-        <value>http://aladin.u-strasbg.fr/java/FAQ.htx</value>
+        <value>https://aladin.u-strasbg.fr/java/FAQ.htx</value>
     </metadata>
     <metadata>
         <key>aladin.version</key>
-        <value>v9.033a</value>
+        <value>v11.024</value>
     </metadata>
     <metadata>
         <key>author.affiliation</key>
@@ -42,7 +42,7 @@
     </metadata>
     <metadata>
         <key>home.page</key>
-        <value>http://aladin.u-strasbg.fr/</value>
+        <value>https://aladin.u-strasbg.fr/</value>
     </metadata>
     <subscription>samp.app.ping</subscription>
     <subscription>samp.hub.disconnect</subscription>

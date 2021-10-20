@@ -15,7 +15,7 @@
         <application>topcat</application>
         <application>Cassis</application>
         <application>ETC-42</application>
-        <application>seleste</application>
+        <!--<application>seleste</application>-->
         <application>splat</application>
         <application>VOSpec</application>
         <application>gaia</application>
@@ -24,6 +24,7 @@
     </family>
     <family category="WebApps">
         <application>AMDA</application>
+        <application>AMHRA</application>
         <application>OiDB</application>
         <application>Simbad</application>
         <application>VizieR</application>

@@ -10,7 +10,7 @@
     </metadata>
     <metadata>
         <key>samp.documentation.url</key>
-        <value>http://oidb.jmmc.fr/doc.html</value>
+        <value>https://oidb.jmmc.fr/doc.html</value>
     </metadata>
     <metadata>
         <key>x-samp.affiliation.name</key>
@@ -18,7 +18,7 @@
     </metadata>
     <metadata>
         <key>x-samp.affiliation.url</key>
-        <value>http://www.jmmc.fr/</value>
+        <value>https://www.jmmc.fr/</value>
     </metadata>
     <metadata>
         <key>x-samp.authors</key>
@@ -38,11 +38,11 @@
     </metadata>
     <metadata>
         <key>x-samp.releasenotes.url</key>
-        <value>http://oidb.jmmc.fr/about.html</value>
+        <value>https://oidb.jmmc.fr/about.html</value>
     </metadata>
     <metadata>
         <key>x-samp.rss.url</key>
-        <value>http://oidb.jmmc.fr/rss</value>
+        <value>https://oidb.jmmc.fr/rss</value>
     </metadata>
 
     <metadata>
@@ -51,6 +51,6 @@
     </metadata>
     <metadata>
         <key>samp.documentation.url</key>
-        <value>http://oidb.jmmc.fr/doc.html</value>
+        <value>https://oidb.jmmc.fr/doc.html</value>
     </metadata>
 </SampStub>

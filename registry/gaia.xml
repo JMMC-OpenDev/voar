@@ -10,11 +10,11 @@
     </metadata>
     <metadata>
         <key>samp.icon.url</key>
-        <value>http://astro.dur.ac.uk/~pdraper/gaia/gaiaicon.gif</value>
+        <value>https://astro.dur.ac.uk/~pdraper/gaia/gaiaicon.gif</value>
     </metadata>
     <metadata>
         <key>samp.documentation.url</key>
-        <value>http://astro.dur.ac.uk/~pdraper/gaia/gaia.html</value>
+        <value>https://astro.dur.ac.uk/~pdraper/gaia/gaia.html</value>
     </metadata>
     <metadata>
         <key>x-samp.cli.path</key>

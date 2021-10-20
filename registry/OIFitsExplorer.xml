@@ -14,7 +14,7 @@
     </metadata>
     <metadata>
         <key>x-samp.affiliation.url</key>
-        <value>http://www.jmmc.fr/</value>
+        <value>https://www.jmmc.fr/</value>
     </metadata>
     <metadata>
         <key>x-samp.authors</key>
@@ -30,15 +30,15 @@
     </metadata>
     <metadata>
         <key>x-samp.homepage.url</key>
-        <value>http://www.jmmc.fr/oifitsexplorer</value>
+        <value>https://www.jmmc.fr/oifitsexplorer</value>
     </metadata>
     <metadata>
         <key>x-samp.release.date</key>
-        <value>21/11/2016</value>
+        <value>03/06/2021</value>
     </metadata>
     <metadata>
         <key>x-samp.release.version</key>
-        <value>0.2.1 beta 5</value>
+        <value>0.2.6</value>
     </metadata>
     <subscription>samp.app.ping</subscription>
     <subscription>samp.hub.disconnect</subscription>
