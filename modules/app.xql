@@ -1,4 +1,4 @@
-xquery version "3.0";
+xquery version "3.1";
 
 module namespace app="http://jmmc.fr/apps/voar/templates";
 
@@ -23,12 +23,13 @@ return <p>{count($tests//url)} tested urls, {count($tests//error)} error(s)</p> 
 
 declare function app:categories($node as node(), $model as map(*)){
     let $c := data(for $c in doc($config:app-root||"/registry/__index__.xml")//SampStubList/family/@category order by $c return $c)
-    return map { "categories" := $c }
+    return map { "categories" : $c }
 };
 
 declare function app:category-checkbox($node as node(), $model as map(*), $category as xs:string*){
     let $cat := $model("category")
-    return ( if($cat=$category) then attribute {"checked"} {"on"} else (), attribute {"value"} {$cat} ,  attribute {"type"} {"checkbox"}, attribute {"name"} {"category"}, $cat)
+(:  return ( if($cat=$category) then attribute {"checked"} {"on"} else (), attribute {"value"} {$cat} ,  attribute {"type"} {"checkbox"}, attribute {"name"} {"category"}, $cat) :)
+    return element {name($node)} {( if($cat=$category) then attribute {"checked"} {"on"} else (), attribute {"value"} {$cat} ,  attribute {"type"} {"checkbox"}, attribute {"name"} {"category"}, $cat)}
 };
 
 (: produce initial SampStub list with some filtering :)
@@ -71,7 +72,7 @@ declare function app:search-stubs($category as xs:string*, $mtype as xs:string*,
 declare function app:search($node as node(), $model as map(*), $category as xs:string*, $mtype as xs:string*, $description as xs:string*, $q as xs:string*, $qtype as xs:string?) {        
     let $stub-list := app:search-stubs( $category, $mtype, $description, $q, $qtype)        
     return
-        map:new(($model,map { "stubs" := $stub-list , "info" := count($stub-list)||" stubs "||count($category)||" cats ("||string-join($category,",")}))
+        map:merge(($model,map { "stubs" : $stub-list , "info" : count($stub-list)||" stubs "||count($category)||" cats ("||string-join($category,",")}))
 };
 
 declare function app:display($node as node(), $model as map(*), $format as xs:string?) {    
@@ -82,46 +83,116 @@ declare function app:display($node as node(), $model as map(*), $format as xs:st
         else if($format="xml") then 
             app:displayXml($node, $model)
         else        
-        for $stubl in $stubs
-        let $family := $stubl/category
-        group by $family
-        order by $family
-        return
-        <div>
-            <h2>{data($family)}</h2>
-            <!-- {$model("info")} -->
-            <table>
-                <tr>
-                    <td>
-                        <ul>
-                        {
-                            for $stub in $stubl                      
-                            let $app := data($stub/@uid)    
-                            let $desc := data($stub//metadata[key="samp.description.text"]/value)
-                            let $desc := if(string-length($desc)>80) then substring($desc, 1, 57)|| "..." else $desc
-                            return <li><a href="app.html?app={$app}">{$app} : {$desc}</a></li>
-                        }    
-                        </ul>                            
-                    </td>
-                    <!--
-                    <td>
-                        {
-                            let $stubs := collection("/db/apps/voar/registry/")//SampStub[.//metadata[matches(key,"samp.icon.url")]/value and .//metadata[matches(key,"samp.name")]/value=$family/application]
-                            return
-                            <table border="1">                              
-                                <tr>
-                                    {for $stub in $stubs return <td> <img src="{$stub//metadata[key='samp.icon.url']/value}"/></td>}
-                                </tr>
-                                <tr>
-                                    {for $stub in $stubs return <td> <a href="app.html?app={$stub//metadata[key='samp.name']/value}">{$stub//metadata[key='samp.name']/value}</a> </td>}
-                                </tr>
-                            </table>
-                        }
-                    </td>
-                    -->
-            </tr>
-            </table>
-        </div>
+        let $defaultTab := "Dock"
+        let $variants := map{
+        
+        $defaultTab : <div>
+            {
+            for $stubl in $stubs
+            let $family := $stubl/category
+            group by $family
+            order by $family
+            return
+                (
+                    <h3>{data($family)}</h3>,
+                    <ul class="list-inline">{
+                    for $stub in $stubl                      
+                    let $app := data($stub/@uid)    
+                    let $jnlp-url := $stub//metadata[key="x-samp.jnlp.url"]/value
+                    let $url := data(for $k in ("x-samp.webapp.url","home.page", "samp.documentation.url") return $stub//metadata[key=$k]/value)[1]
+                    let $desc := data($stub//metadata[key="samp.description.text"]/value)
+                    let $desc := if(string-length($desc)>80) then substring($desc, 1, 57)|| "..." else $desc
+                    let $icon := "./registry/"||$app||".png" (: force local icon :)
+                    return 
+(:                        <div class="col-xs-6 col-md-3">:)
+                            <li ><a href="{$url}"><img class="img-thumbnail" style="width: 80px; display: block;" src="{$icon}"/> </a>
+                            { if ($jnlp-url) then  <a href="{$jnlp-url}"><em>javaws</em></a> else () }
+                            <a href="app.html?app={$app}"><span class="pull-right glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+                            
+                                
+                            </li>
+(:                        </div>:)
+                    }</ul>
+                )
+            }
+            </div>,
+            "Table" : <div>
+            <table class="table table-striped">
+            <thead>
+                <tr><th></th><th>App</th><th>Description</th><th>Affiliation</th></tr>
+            </thead>
+            {
+            for $stubl in $stubs
+            let $family := $stubl/category
+            group by $family
+            order by $family
+            return
+                (
+                    <tr><th></th><th colspan="3">{data($family)}</th></tr>,
+                    for $stub in $stubl                      
+                    let $app := data($stub/@uid)    
+                    let $desc := data($stub//metadata[key="samp.description.text"]/value)
+                    let $desc := if(string-length($desc)>80) then substring($desc, 1, 57)|| "..." else $desc
+                    let $icon := $stub//metadata[key='samp.icon.url']/value
+                    let $icon := if($icon) then $icon else "./registry/"||$app||".png"
+                    return 
+                        <tr>
+                            <td><img src="{$icon}" height="30px"/></td><td><a href="app.html?app={$app}">{$app}</a></td><td>{$desc}</td><td>{data($stub//metadata[key=("x-samp.affiliation.name", "author.affiliation")]/value)[1]} </td>
+                        </tr>
+                )
+            }</table>
+            </div>,
+        "By capabilities (mtypes)" : 
+            let $capabilities := sort(distinct-values($stubs//subscription[not(starts-with(., "samp."))]))
+            let $ordered-stubs := for $stubl in $stubs[.//subscription[not(starts-with(., "samp."))]]
+                let $family := $stubl/category
+                group by $family
+                order by $family
+                return
+                    $stubl
+            return 
+                <table class="table table-striped table-header-rotated">
+                <thead>
+                    <tr><th></th>{ for $stub in $ordered-stubs return <th class="rotate-45"><div><span>{data($stub/@uid)}</span></div></th>}</tr>
+                </thead>
+                {
+                    for $c in $capabilities return
+                        <tr>
+                            <td>{$c}</td>
+                            { for $stub in $ordered-stubs return <td>{if ( $c = $stub//subscription ) then "X" else () }</td>}
+                        </tr>
+                }</table>,
+        "By metadata" : 
+            let $metadata := sort(distinct-values($stubs//metadata/key))
+            let $ordered-stubs := for $stubl in $stubs
+                let $family := $stubl/category
+                group by $family
+                order by $family
+                return
+                    $stubl
+            return 
+                <table class="table table-striped table-header-rotated">
+                <thead>
+                    <tr><th></th>{ for $stub in $ordered-stubs return <th class="rotate-45"><div><span>{data($stub/@uid)}</span></div></th>}</tr>
+                </thead>
+                {
+                    for $m in $metadata
+                    return
+                        <tr>
+                            <td>{$m}</td>
+                            { for $stub in $ordered-stubs return <td>{if ( $m = $stub//metadata/key ) then <a href="#" title="{$stub//metadata[key=$m]/value}">X</a> else () }</td>}
+                        </tr>
+                }</table>
+            }
+        
+        return <div>
+            <ul class="nav nav-tabs" role="tablist">
+            {  for $k at $pos in map:keys($variants) return <li role="presentation" class="{('active')[$k=$defaultTab]}"><a href="#tab__{$pos}" aria-controls="home" role="tab" data-toggle="tab">{$k}</a></li>   }
+            </ul>
+            <div class="tab-content">{
+                for $k at $pos in map:keys($variants) return <div role="tabpanel" class="tab-pane fade {('in active')[$k=$defaultTab]}" id="tab__{$pos}">{map:get($variants,$k)}</div>
+            }</div>
+            </div>
 };
 
 declare function app:displayJson($node as node(), $model as map(*)) as xs:string {
@@ -147,7 +218,8 @@ let $list := <list>
         </SampApplication>    
     }
 </list>
-let $json := util:serialize($list, "method=json")
+
+let $json := serialize($list, map{"method":"json", "indent":true()})
 
 return if($jsonpCallback) then $jsonpCallback||"("||$json||")" else $json
 };
@@ -181,7 +253,7 @@ let $list := <list>
         </SampApplication>    
     }
 </list>
-let $json := util:serialize($list, "method=json")
+let $json := serialize($list, map{ "method":"json", "indent":true()})
 
 return if($jsonpCallback) then $jsonpCallback||"("||$json||")" else $json
 };
@@ -190,7 +262,7 @@ return if($jsonpCallback) then $jsonpCallback||"("||$json||")" else $json
 declare function app:displayXml($node as node(), $model as map(*)) as xs:string { 
     let $stubs := $model("stubs")
     let $list := <list>    { $stubs } </list>
-    return serialize($list)
+    return serialize($list, map{"indent":true()})
 };
 
 
@@ -266,7 +338,7 @@ declare function app:getEmbedderSnippet($node as node(), $model as map(*)) {
         <figure>
             <div class="code" data-language="html" style="background: #555555">
             {
-                serialize($app:code)
+                serialize($app:code, map{"indent":true()})
             }                
             </div>
             <figcaption>Javascript to include onto your web page</figcaption>        

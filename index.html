@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns="http://www.w3.org/1999/xhtml" class="templates:surround?with=templates/page.html&amp;at=content">
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                <h1>
+                <h2>
                     <img src="resources/images/voar49x64.png" alt="vo ar icon"/> application registry<a href="http://www.jmmc.fr/applauncher">
                         <img src="//apps.jmmc.fr/images/applauncher-6464.png" alt="icon"/>
                     </a>
-                </h1>
+                </h2>
                 <p>
         
     This web portal shows the <a href="http://www.jmmc.fr/applauncher">AppLauncher</a> registry and aims to:
@@ -20,16 +20,15 @@
                 </p>
             </div>
             <div class="col-md-6">
-                <h1>Registered application list</h1>
+                <h3>Filter registered applications</h3>
                 <form id="fun-query-form" name="f-query" action="" method="POST">
                     <table>
                         <tr>
-                            <td class="f-btn"> Search </td>
+                            <td class="f-btn"> <button id="f-btn-search" type="submit" name="action" value="search" class="btn btn-primary btn-xs"> Search </button> </td>
                             <td colspan="3">
                                 <input id="query-field" name="q" type="text" class="templates:form-control"/>
-                in
-                    
-                        <select name="qtype" class="templates:form-control">
+                                in
+                                <select name="qtype" class="templates:form-control">
                                     <option value="">Every fields</option>
                                     <option value="desc">Description</option>
                                     <option value="mtype">SAMP MTypes</option>
@@ -44,9 +43,9 @@
                             <td colspan="3">
                                 <div data-template="app:categories">
                                     <div>
-                                        <input data-template="templates:each" data-template-from="categories" data-template-to="category">
-                                            <span data-template="app:category-checkbox"/>
-                                        </input>
+                                        <span data-template="templates:each" data-template-from="categories" data-template-to="category">
+                                            <input data-template="app:category-checkbox"/>
+                                        </span>
                                     </div>
                                 </div>
                             </td>
@@ -63,12 +62,11 @@
                                 </select>
                             </td>
                             <td class="f-btn">
-                                <button id="f-btn-search" type="submit" name="action" value="search" class="btn btn-primary btn-xs">Search</button>
+                                
                             </td>
                         </tr>
                     </table>
                 </form>
-                <hr/>
                 <form id="fun-query-form" name="f-query" action="" method="POST">
                     <button id="f-btn-search" type="submit" name="action" value="search" class="btn btn-primary btn-xs">List ALL applications</button>
                 </form>

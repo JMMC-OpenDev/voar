@@ -12,6 +12,14 @@
     <finish/>
     <note/>
     <changelog>
+         <change xmlns="" version="0.5">
+           <h3>Registry update</h3>
+           <ul>
+             <li>Update http urls over https</li>
+             <li>Add AMHRA to the webapp list</li>
+           </ul>
+           <h3>Enhance the UI</h3>
+         </change>
          <change xmlns="" version="0.4">
            <h3>Url update with https://voar.jmmc.fr</h3>
            <h3>Remove VOplot from the registry </h3>
