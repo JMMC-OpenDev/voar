@@ -13,6 +13,7 @@ import module namespace templates="http://exist-db.org/xquery/templates" ;
  :)
 import module namespace config="http://jmmc.fr/apps/voar/config" at "config.xqm";
 import module namespace app="http://jmmc.fr/apps/voar/templates" at "app.xql";
+import module namespace jmmc-about="http://exist.jmmc.fr/jmmc-resources/about";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 
