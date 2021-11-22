@@ -1,6 +1,6 @@
 /* 
   API v-0.3 of voar
-  - replace home variable with '//voar.jmmc.fr/' as soon as this server get a valid certificates.
+  - force icons and undefined urls with https home prefix.
   API v-0.2 of voar
   - provide a multischeme support for urls
   - provide support for multiple parameters given as an array eg: 
@@ -13,7 +13,7 @@
 
 (function($){
     
-    home='//voar.jmmc.fr/' 
+    home='https://voar.jmmc.fr/' 
     
     $.fn.appendAppList = function(params){
         return this.each(function(){
@@ -28,7 +28,7 @@
                             // check to prepare urls or backup ones if not provided
                             var url=f.jnlp_url;
                             var a_target;
-                            var icon_url=f.icon_url;
+                            var icon_url=home+"registry/"+f.name.replace(" ", "_")+".png";
                             
                             if( url === undefined ) {                                
                                 a_target=" target='_blank'";
@@ -40,10 +40,6 @@
                                     url="http://ivoa.net/astronomers/applications.html";
                                 }
                             }
-                            
-                            if( icon_url === undefined ) { 
-                                icon_url=home+"registry/"+f.name+".png"
-                            }                            
                             
                             var li = "<li>"
                             + "<a " + " href='" +  url + "' info='" +f.description_text 
