@@ -5,7 +5,8 @@ xquery version "3.0";
  :)
 declare option exist:serialize "media-type=text/javascript";
 
-import module namespace templates="http://exist-db.org/xquery/templates" ;
+import module namespace templates="http://exist-db.org/xquery/html-templating";
+import module namespace lib="http://exist-db.org/xquery/html-templating/lib";
 import module namespace config="http://jmmc.fr/apps/voar/config" at "modules/config.xqm";
 
 import module namespace app="http://jmmc.fr/apps/voar/templates" at "modules/app.xql";

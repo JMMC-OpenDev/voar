@@ -4,4 +4,11 @@
 
   <dependency processor="http://exist-db.org" semver-min="5.0.0"/>
   <dependency package="http://exist-db.org/html-templating" semver-min="1.0.2"/>
+  <!-- 14 Mar 2022 16:34:42,349 [main] ERROR (AutoDeploymentTrigger.java [execute]:127) - Exception during deployment of app zz_voar.xar: Missing dependency: package http://exist-db.org/apps/shared could not be resolved. 
+org.expath.pkg.repo.PackageException: Missing dependency: package http://exist-db.org/apps/shared could not be resolved.
+	at org.exist.repo.Deployment.installAndDeploy(Deployment.java:256) ~[exist.uber.jar:6.0.1]
+  
+    <dependency package="http://exist-db.org/apps/shared" semver-min="0.9.1"/>
+
+  -->
 </package>
