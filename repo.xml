@@ -12,6 +12,12 @@
     <finish/>
     <note/>
     <changelog>
+         <change xmlns="" version="0.7">
+           <h3>Update registry - 2022-04-07</h3>
+           <ul>
+             <li>Aspro2, OImaging, Celeste, AMHRA</li>
+           </ul>
+         </change>
          <change xmlns="" version="0.6">
            <h3>Technical update</h3>
            <ul>
