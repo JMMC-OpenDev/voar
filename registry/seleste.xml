@@ -13,6 +13,10 @@
         <value>http://cda.cfa.harvard.edu/seleste/seleste/seleste.jnlp</value>
     </metadata>
     <metadata>
+        <key>email</key>
+        <value>seleste@head.cfa.harvard.edu</value>
+    </metadata>
+    <metadata>
         <key>samp.description.text</key>
         <value>seleste is a VAO application for searching astronomical services which follow the TAP specifications</value>
     </metadata>

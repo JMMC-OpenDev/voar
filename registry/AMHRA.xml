@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <SampStub uid="AMHRA" type="WEB">
     <metadata>
         <key>samp.name</key>
         <value>AMHRA</value>
+    </metadata>
+    <metadata>
+        <key>samp.icon.url</key>
+        <value>https://amhra.oca.eu/AMHRA/pictures/logoamhra-50-a.png</value>
     </metadata>
     <metadata>
         <key>samp.description.text</key>
@@ -20,5 +24,10 @@
         <key>home.page</key>
         <value>https://amhra.oca.eu/</value>
     </metadata>
-    <!-- TODO add list of capabilities -->
+    <subscription>samp.hub.disconnect</subscription>
+    <subscription>samp.hub.event.metadata</subscription>
+    <subscription>samp.hub.event.register</subscription>
+    <subscription>samp.hub.event.shutdown</subscription>
+    <subscription>samp.hub.event.subscriptions</subscription>
+    <subscription>samp.hub.event.unregister</subscription>
 </SampStub>
