@@ -314,13 +314,13 @@ declare function app:getApplicationDetail($node as node(), $model as map(*)) {
 declare variable $app:code :=<div>
     
     <!-- skip the following line if your page already integrates the jQuery library -->
-    <script type="text/javascript" src="http://voar.jmmc.fr/api/jquery-1.11.1.min.js"/>
+    <script type="text/javascript" src="https://voar.jmmc.fr/api/jquery-1.11.1.min.js"/>
     
     <!-- define an ul element with uniq id -->
     <ul id="sampListByMtype"></ul>            
             
     <!-- load the main javascript and call functions over the previously defined ul -->
-    <script type="text/javascript" src="http://voar.jmmc.fr/api/voar-0.3.js"/>
+    <script type="text/javascript" src="https://voar.jmmc.fr/api/voar-0.3.js"/>
     <script type="text/javascript">
     
         <![CDATA[    $("#sampListByMtype").appendAppList({'mtype':'table.load.votable'}) ]]>
